@@ -1,1 +1,21 @@
+---
+- name: Deploy LAMP Stack on client1 Node
+  hosts: client1
+  become: yes
+  tasks:
+    - name: Copy the LAMP.sh script
+      copy:
+        src: /root/lamp_deploy/LAMP.sh
+        dest: /tmp/LAMP.sh
+        mode: 0755
+
+    - name: Execute the LAMP.sh script
+      command: bash /tmp/LAMP.sh
+
+    - name: Check Server Uptime
+      cron:
+        name: "Check Server Uptime"
+        minute: 0
+        hour: 0
+        job: "uptime >> /var/log/server_uptime.log"
 
