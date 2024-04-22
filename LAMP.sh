@@ -64,7 +64,7 @@ echo "Writing to config file" >> /root/monitor.log
 cd /etc/apache2/sites-available/
 touch laravel.conf
 echo "<VirtualHost *:80>
-  ServerName 192.168.50.11
+  ServerName 192.168.33.11
   DocumentRoot /var/www/laravel/public
 
   <Directory /var/www/laravel/public>
