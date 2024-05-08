@@ -13,6 +13,25 @@ Deploy LAMP Stack
 i. I edited my vagrantfile to automate the provisioning of two ubuntu servers as illustrated below:
 ![automation the provisioning of two ubuntu servers](./multivm_config.png.png)
 
+ii. The machines were spinned up using `vagrant up` followed by `vagrant ssh master` and `vagrant ssh slave` using different bash windows. and I was able to SSH into the slave machine from the master using a generated public key.
+
+iii. Afterwards, I wrote my script on the master node, which was made executable with the commande `chmod +x LAMP.sh`, then the script was executed by using the command `./LAMP.sh`
+
+iv. Furthermore, I created a host inventory file to store my remote server's IP address, then wrote my ansible playbook.
+
+v. The ansible playbook was executed with the command `ansible-playbook -i /root/LAMP_deploy/inventory.ini LAMP_deploy.yaml`and the result is given in the image below:
+![ansible_playbook](./ansible_playbook.png)
+
+vi. The above command copies the script for the LAMP stack installation to my remote server (slave), which has been added into my inventory file on the master node. The script was tested by execution with `./LAMP.sh` on the slave node, and the script installed the LAMP stack also on the slave node.
+
+vii. The IP address of the slave machine was loaded on a browser to confirm the installation, and this was confirmed working as it was able to load the laravel default page.
+
+![laravel default page](./laravel_page.png)
+
+
+
+
+
 
 
 
